@@ -23,6 +23,11 @@ zig build run
 The first build compiles libghostty and takes about 40 seconds (M4 Pro);
 after that, about a second.
 
+If that first build drowns in `error: server connection failed:
+TlsInitializationFailed`, it is Zig's TLS stack giving up on parallel
+downloads, not a broken network: just run `zig build` again, each run brings
+more of Ghostty's dependencies in.
+
 Ghostty is pinned to one commit, because the libghostty API still changes.
 To move to another commit:
 
